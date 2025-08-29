@@ -1,1 +1,1 @@
-Analyzing Airbnb data to see if people give more negative revies on full moons.
+Analyzing Airbnb data to see if people give more negative reviews following a full moon.
