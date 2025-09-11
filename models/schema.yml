@@ -12,20 +12,37 @@ models:
           - not_null
 
       - name: host_id
+        description: The host's id. References the host table.
         tests:
-         - not_null
-         - relationships:
-            to: ref('dim_hosts_cleansed')
-            field: host_id
+          - not_null
+          - relationships:
+              to: ref('dim_hosts_cleansed')
+              field: host_id
 
       - name: room_type
+        description: Type of the apartment / room
         tests:
-            - accepted_values:
-                values: ['Entire home/apt',
-                      'Private room',
-                      'Shared room',
-                      'Hotel room']
+          - accepted_values:
+              values: [ 'Entire home/apt', 'Private room', 'Shared room', 'Hotel room' ]
 
       - name: minimum_nights
-        tests: 
+        description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
+        tests:
           - positive_value
+  - name: mart_fullmoon_reviews
+    description: Description for full moon model
+    columns:
+      - name: listing_id
+        data_type: number
+      - name: review_date
+        data_type: timestamp_ntz
+      - name: reviewer_name
+        description: name of reviewer
+        data_type: varchar
+      - name: review_text
+        description: The review
+        data_type: varchar
+      - name: review_sentiment
+        data_type: varchar
+      - name: is_full_moon
+        data_type: varchar
